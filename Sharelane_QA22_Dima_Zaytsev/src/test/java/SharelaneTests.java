@@ -218,4 +218,28 @@ public class SharelaneTests {
         firstNameInput = driver.findElement(By.name("first_name"));
         Assert.assertEquals(firstNameInput.isDisplayed(), true);
     }
+
+    @Test
+    public void signUpNegativeTest7()   {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://www.sharelane.com/cgi-bin/register.py?page=1&zip_code=12787");
+
+        WebElement firstNameInput = driver.findElement(By.name("first_name"));
+        firstNameInput.sendKeys("Dima,hsjdv");
+        WebElement lastNameInput = driver.findElement(By.name("last_name"));
+        lastNameInput.sendKeys("sdjhbf");
+        WebElement emailInput = driver.findElement(By.name("email"));
+        emailInput.sendKeys("wkefnlt656@kjnsd.com");
+        WebElement passwordInput = driver.findElement(By.name("password1"));
+        passwordInput.sendKeys("qwerty123");
+        WebElement confirmPasswordInput = driver.findElement(By.name("password2"));
+        confirmPasswordInput.sendKeys("qwerty123");
+        WebElement registerButton = driver.findElement(By.cssSelector("[value = Register]"));
+        registerButton.click();
+
+        firstNameInput = driver.findElement(By.name("first_name"));
+        Assert.assertEquals(firstNameInput.isDisplayed(), true);
+    }
 }
